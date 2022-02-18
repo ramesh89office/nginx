@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: pseudocode-lp-app
-          image: 'rameshm2020/hackathon:pseudocode-lp.3'
+          image: 'rameshm2020/hackathon:pseudocode-lp.4'
           imagePullPolicy: Always
 #          envFrom:
 #            - configMapRef:
