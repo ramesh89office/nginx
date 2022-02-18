@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hackathon
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pseudocode-lp
+  namespace: hackathon
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0  
+  selector:
+    matchLabels:
+      app: pseudocode-lp
+  template:
+    metadata:
+      labels:
+        app: pseudocode-lp
+    spec:
+      containers:
+        - name: pseudocode-lp-app
+          image: 'rameshm2020/hackathon:pseudocode-lp.3'
+          imagePullPolicy: Always
+#          envFrom:
+#            - configMapRef:
+#                name: env-configuration
+#            - secretRef:
+#                name: secret-configuration
+          resources:
+            requests:
+              memory: 400Mi
+              cpu: '0.5'
+            limits:
+              memory: 800Mi
+              cpu: '0.8'
+          ports:
+            - containerPort: 8080
+            - containerPort: 5701
+#          livenessProbe:
+#            httpGet:
+#              path: /actuator/health
+#              port: 8080
+#            initialDelaySeconds: 15
+#            periodSeconds: 15
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health
+#              port: 8080
+#            initialDelaySeconds: 15
+#            periodSeconds: 15
