@@ -1,8 +1,8 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: hackathon
----
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: hackathon
+#---
 
 apiVersion: apps/v1
 kind: Deployment
@@ -15,7 +15,7 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
-      maxUnavailable: 0  
+      maxUnavailable: 0
   selector:
     matchLabels:
       app: pseudocode-lp
@@ -24,9 +24,11 @@ spec:
       labels:
         app: pseudocode-lp
     spec:
+      imagePullSecrets:
+      - name: regcred
       containers:
         - name: pseudocode-lp-app
-          image: 'rameshm2020/hackathon:pseudocode-lp.4'
+          image: 'rameshm2020/hackathon:pseudocode-lp.9'
           imagePullPolicy: Always
 #          envFrom:
 #            - configMapRef:
