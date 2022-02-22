@@ -24,15 +24,14 @@ spec:
       labels:
         app: pseudocode-ui
     spec:
+      imagePullSecrets:
+      - name: regcred
       containers:
         - name: pseudocode-ui-app
-          image: 'rameshm2020/hackathon:pseudocode-ui.2'
+          image: 'rameshm2020/hackathon:pseudocode-ui.10'
+#          imagePullSecrets:
+#          - name: regcred
           imagePullPolicy: Always
-#          envFrom:
-#            - configMapRef:
-#                name: env-configuration
-#            - secretRef:
-#                name: secret-configuration
           resources:
             requests:
               memory: 400Mi
@@ -40,19 +39,4 @@ spec:
             limits:
               memory: 800Mi
               cpu: '0.8'
-#          ports:
-#            - containerPort: 8080
-#            - containerPort: 5701
-#          livenessProbe:
-#            httpGet:
-#              path: /actuator/health
-#              port: 8080
-#            initialDelaySeconds: 15
-#            periodSeconds: 15
-#          readinessProbe:
-#            httpGet:
-#              path: /actuator/health
-#              port: 8080
-#            initialDelaySeconds: 15
-#            periodSeconds: 15
 
