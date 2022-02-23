@@ -28,7 +28,7 @@ spec:
       - name: regcred
       containers:
         - name: pseudocode-ui-app
-          image: 'rameshm2020/hackathon:pseudocode-ui.14'
+          image: 'rameshm2020/hackathon:pseudocode-ui.15'
 #          imagePullSecrets:
 #          - name: regcred
           imagePullPolicy: Always
