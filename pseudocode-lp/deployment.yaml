@@ -10,7 +10,7 @@ metadata:
   name: pseudocode-lp
   namespace: hackathon
 spec:
-  replicas: 1
+  replicas: 10
   strategy:
     type: RollingUpdate
     rollingUpdate:
